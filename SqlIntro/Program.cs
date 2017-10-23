@@ -14,6 +14,17 @@ namespace SqlIntro
                 Console.WriteLine("ModifiedDate:" + prod.ModifiedDate.DayOfWeek);
             }
 
+
+            var product = new Product()
+            {
+               ProductId = 3,
+                Name = "Bladess",
+            };
+
+            repo.UpdateProduct(product);
+            Console.WriteLine("Product ID 3 changed to Bladess");
+            repo.DeleteProduct(4);
+            Console.WriteLine("Should have product 4 deleted now");
            
             Console.ReadLine();
         }

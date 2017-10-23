@@ -10,6 +10,9 @@ using MySql.Data.MySqlClient;
 namespace SqlIntro
 {
     public class ProductRepository
+    
+
+     
     {
         private readonly string _connectionString;
 
@@ -47,8 +50,9 @@ namespace SqlIntro
         {
             using (var conn = new MySqlConnection(_connectionString))
             {
+                conn.Open();
                 var cmd = conn.CreateCommand();
-                cmd.CommandText = ""; //Write a delete statement that deletes by id
+                cmd.CommandText = "Delete from product where productid = " + id; //Write a delete statement that deletes by id
                 cmd.ExecuteNonQuery();
             }
         }
@@ -62,10 +66,11 @@ namespace SqlIntro
             //More on this in the future...  Nothing to do here..
             using (var conn = new MySqlConnection(_connectionString))
             {
+                conn.Open();
                 var cmd = conn.CreateCommand();
-                cmd.CommandText = "update product set name = @name where id = @id";
-                cmd.Parameters.AddWithValue("@name", prod.Name);
-                cmd.Parameters.AddWithValue("@id", prod.Id);
+                cmd.CommandText = "update product set name = 'Bladess' where ProductID =316";
+                cmd.Parameters.AddWithValue("Bladess",prod.Name);
+                cmd.Parameters.AddWithValue("316", prod.ProductId);
                 cmd.ExecuteNonQuery();
             }
         }
@@ -77,8 +82,10 @@ namespace SqlIntro
         {
             using (var conn = new MySqlConnection(_connectionString))
             {
+                conn.Open();
+
                 var cmd = conn.CreateCommand();
-                cmd.CommandText = "INSERT into product (name) values(@name)";
+                cmd.CommandText = "INSERT into product (name) values(@jackj)";
                 cmd.Parameters.AddWithValue("@name", prod.Name);
                 cmd.ExecuteNonQuery();
             }
