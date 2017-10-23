@@ -85,8 +85,9 @@ namespace SqlIntro
                 conn.Open();
 
                 var cmd = conn.CreateCommand();
-                cmd.CommandText = "INSERT into product (name) values(@jackj)";
-                cmd.Parameters.AddWithValue("@name", prod.Name);
+                cmd.CommandText = "INSERT into product (Name,ModifiedDate) values (@Name, @ModifiedDate)";
+                cmd.Parameters.AddWithValue("@Name", prod.Name);
+                cmd.Parameters.AddWithValue("@ModifiedDate", prod.ModifiedDate);
                 cmd.ExecuteNonQuery();
             }
         }

@@ -15,9 +15,10 @@ namespace SqlIntro
             }
 
 
+
             var product = new Product()
             {
-               ProductId = 3,
+               ProductId = 316,
                 Name = "Bladess",
             };
 
@@ -25,7 +26,17 @@ namespace SqlIntro
             Console.WriteLine("Product ID 3 changed to Bladess");
             repo.DeleteProduct(4);
             Console.WriteLine("Should have product 4 deleted now");
-           
+
+            var productA = new Product()
+            {
+                Name = "Very Large Ball Bearings",
+                ModifiedDate = DateTime.UtcNow,
+
+            }
+            ;
+
+            repo.InsertProduct(productA);
+            Console.WriteLine("Inserted new name and modified date time");
             Console.ReadLine();
         }
 
